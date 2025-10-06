@@ -18,16 +18,22 @@ public class ProductController {
         return "hello";
     }
 
-    @GetMapping("/getprodcut")
-    public Product getProduct()
+    @GetMapping("/getproducts")
+    public List<Product> getProduct()
     {
         Product myProduct = new Product("TV", 500);
-        return myProduct;
+        return myList;
     }
     @PostMapping("/addProduct")
     public Product addProduct(@Valid @RequestBody Product myProduct)
     {
         myList.add(myProduct);
         return myProduct;
+    }
+    @PostMapping("/bulk")
+    public List<Product> addBulkProducts(@Valid @RequestBody List<Product> products)
+    {
+        myList.addAll(products);
+        return myList;
     }
 }
